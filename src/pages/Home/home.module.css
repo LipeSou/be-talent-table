@@ -1,0 +1,7 @@
+.homeContainer {
+  margin-top: 32px;
+  width: 1024px;
+  display: flex;
+  padding-left: 32px;
+  padding-right: 32px;
+}

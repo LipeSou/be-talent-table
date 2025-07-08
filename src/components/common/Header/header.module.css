@@ -1,0 +1,13 @@
+.headerComponent {
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.headerContainer {
+  width: 1024px;
+  padding-left: 20px;
+}
