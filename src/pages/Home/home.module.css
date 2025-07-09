@@ -1,11 +1,15 @@
 .homeContainer {
   margin-top: 32px;
   width: 1024px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.homeHeaderContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-bottom: 44px;
 }
 
 .searchContainer {

@@ -1,0 +1,68 @@
+.tableContainer {
+  background-color: var(--white);
+  border-radius: 8px 8px 0px 0px;
+  overflow: hidden;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background-color: var(--blue-primary);
+  color: var(--white);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.tableHeader th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.tableHeader th:first-child {
+  width: 80px;
+  text-align: center;
+}
+
+.tableBody tr {
+  border-bottom: 1px solid var(--gray-10);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.tableBody tr:last-child {
+  border-bottom: none;
+}
+
+.tableBody tr:hover {
+  background-color: var(--gray-05);
+}
+
+.tableBody td {
+  padding: 16px;
+  border: none;
+  color: var(--black);
+  font-size: 16px;
+}
+
+.photoCell {
+  text-align: center;
+  width: 80px;
+}
+
+.employeePhoto {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .tableContainer {
+    border-radius: 8px;
+    margin: 16px 8px;
+  }
+}
