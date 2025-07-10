@@ -16,3 +16,16 @@
   width: 100%;
   max-width: 287px;
 }
+
+@media (max-width: 576px) {
+  .homeHeaderContent {
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+    padding-bottom: 20px;
+  }
+
+  .searchContainer {
+    max-width: none;
+  }
+}

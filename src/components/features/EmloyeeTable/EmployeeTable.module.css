@@ -60,9 +60,58 @@
   object-fit: cover;
 }
 
+.mobileCardList {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .mobileHeader {
+    background-color: var(--blue-primary);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 84px 1fr 46px;
+    align-items: center;
+    height: 47px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+  .mobileHeaderPhoto {
+    padding: 14px 16px 14px 16px;
+  }
+
   .tableContainer {
-    border-radius: 8px;
-    margin: 16px 8px;
+    margin-top: 0px;
+  }
+
+  .table {
+    display: none;
+  }
+
+  .mobileCardList {
+    display: block;
+  }
+
+  .mobileCard {
+    height: 60px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 84px 1fr 46px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobileCardPhoto {
+    padding-left: 16px;
+  }
+
+  .circle {
+    width: 8px;
+    height: 8px;
+    background-color: var(--white);
+    border-radius: 50%;
+  }
+
+  .mobileHeaderIcon {
+    padding: 8px;
   }
 }
