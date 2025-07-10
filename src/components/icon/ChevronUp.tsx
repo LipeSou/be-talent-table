@@ -3,7 +3,7 @@ type ChevronDownProps = {
   height?: string | number;
 };
 
-export function ChevronDown({ width = 32, height = 33 }: ChevronDownProps) {
+export function ChevronUp({ width = 32, height = 33 }: ChevronDownProps) {
   return (
     <svg
       width={width}

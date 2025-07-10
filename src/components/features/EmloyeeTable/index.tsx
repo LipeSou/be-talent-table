@@ -1,11 +1,14 @@
 import { ChevronDown } from '@/components/icon/ChevronDown';
 import styles from './EmployeeTable.module.css';
+import { useState } from 'react';
+import { ChevronUp } from '@/components/icon/ChevronUp';
 
 const EmplyeeTable = () => {
   const employees = [1, 2, 3, 4, 5];
+  const [expandedRow, setExpandedRow] = useState();
 
-  const handleMobileCardClick = employee => {
-    console.log('Card clicado:', employee);
+  const handleMobileCardClick = index => {
+    setExpandedRow(expandedRow === index ? null : index);
   };
   return (
     <div className={styles.tableContainer}>
@@ -48,12 +51,32 @@ const EmplyeeTable = () => {
             className={styles.mobileCard}
             onClick={() => handleMobileCardClick(employee)}
           >
-            <div className={styles.mobileCardPhoto}>minha imagem</div>
-            <div className={styles.mobileCardName}>
-              <span>Giovana L. Arruda</span>
+            <div className={styles.mobileCardHeader}>
+              <div className={styles.mobileCardPhoto}>minha imagem</div>
+              <div className={styles.mobileCardName}>
+                <span>Giovana L. Arruda</span>
+              </div>
+              <div>
+                {expandedRow === employee ? <ChevronDown /> : <ChevronUp />}
+              </div>
             </div>
-            <div className={styles.mobileCardDropdown}>
-              <ChevronDown />
+            <div
+              className={`${styles.expandedContent} ${expandedRow === employee ? styles.open : ''}`}
+            >
+              <div className={styles.detailRow}>
+                <span className={styles.detailRowDescription}>Cargo</span>
+                <span>employee.cargo</span>
+              </div>
+              <div className={styles.detailRow}>
+                <span className={styles.detailRowDescription}>
+                  Data de admissão
+                </span>
+                <span>employee.cargo</span>
+              </div>
+              <div className={styles.detailRow}>
+                <span className={styles.detailRowDescription}>Telefone</span>
+                <span>employee.cargo</span>
+              </div>
             </div>
           </div>
         ))}

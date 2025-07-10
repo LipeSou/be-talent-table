@@ -13,6 +13,7 @@
 .tableHeader {
   background-color: var(--blue-primary);
   color: var(--white);
+  font-weight: 600;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,15 +94,18 @@
   }
 
   .mobileCard {
-    height: 60px;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 84px 1fr 46px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 16px;
+    padding-right: 12px;
+
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   }
 
-  .mobileCardPhoto {
-    padding-left: 16px;
+  .mobileCardHeader {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 84px 1fr 46px;
   }
 
   .circle {
@@ -111,7 +115,37 @@
     border-radius: 50%;
   }
 
-  .mobileHeaderIcon {
-    padding: 8px;
+  .expandedContent {
+    padding-top: 32px;
+    width: 100%;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.3s ease-in-out,
+      opacity 0.3s ease-in-out,
+      padding 0.3s ease-in-out;
+    padding-top: 0;
+  }
+
+  .expandedContent.open {
+    max-height: 300px;
+    opacity: 1;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .detailRow {
+    display: flex;
+    justify-content: space-between;
+    border-width: 0px 0px 1px 0px;
+    border-style: dashed;
+    border-color: var(--gray-10);
+    margin-bottom: 16px;
+  }
+
+  .detailRowDescription {
+    font-weight: 600;
   }
 }
