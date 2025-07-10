@@ -3,6 +3,7 @@
   border-radius: 8px 8px 0px 0px;
   overflow: hidden;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 64px;
 }
 
 .table {
@@ -54,7 +55,7 @@
   width: 80px;
 }
 
-.employeePhoto {
+.avatar {
   width: 34px;
   height: 34px;
   border-radius: 50%;

@@ -2,12 +2,15 @@ import { ChevronDown } from '@/components/icon/ChevronDown';
 import styles from './EmployeeTable.module.css';
 import { useState } from 'react';
 import { ChevronUp } from '@/components/icon/ChevronUp';
+import { useEmployees } from '@/hooks/useEmployees';
+import { formatPhone } from '@/utils/formatters';
 
 const EmplyeeTable = () => {
-  const employees = [1, 2, 3, 4, 5];
-  const [expandedRow, setExpandedRow] = useState();
+  const { filteredEmployees } = useEmployees();
 
-  const handleMobileCardClick = index => {
+  const [expandedRow, setExpandedRow] = useState<string | null>(null);
+
+  const handleMobileCardClick = (index: string) => {
     setExpandedRow(expandedRow === index ? null : index);
   };
   return (
@@ -24,15 +27,23 @@ const EmplyeeTable = () => {
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
-          {employees.map(employee => (
-            <tr key={employee}>
-              <td className={styles.photoCell}>minha imagem</td>
-              <td>Giovana L. Arruda</td>
-              <td>Front-end</td>
-              <td>00/00/0000</td>
-              <td>+55 (55) 55555-555</td>
-            </tr>
-          ))}
+          {!!filteredEmployees &&
+            filteredEmployees.length > 0 &&
+            filteredEmployees.map(employee => (
+              <tr key={employee.id}>
+                <td className={styles.photoCell}>
+                  <img src={employee.image} className={styles.avatar} />
+                </td>
+                <td>{employee.name}</td>
+                <td>{employee.job}</td>
+                <td>
+                  {new Date(employee.admission_date).toLocaleDateString(
+                    'pt-BR'
+                  )}
+                </td>
+                <td>{formatPhone(employee.phone)}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
       {/* Mobile */}
@@ -45,41 +56,53 @@ const EmplyeeTable = () => {
           </div>
         </div>
 
-        {employees.map(employee => (
-          <div
-            key={employee}
-            className={styles.mobileCard}
-            onClick={() => handleMobileCardClick(employee)}
-          >
-            <div className={styles.mobileCardHeader}>
-              <div className={styles.mobileCardPhoto}>minha imagem</div>
-              <div className={styles.mobileCardName}>
-                <span>Giovana L. Arruda</span>
-              </div>
-              <div>
-                {expandedRow === employee ? <ChevronDown /> : <ChevronUp />}
-              </div>
-            </div>
+        {!!filteredEmployees &&
+          filteredEmployees.length > 0 &&
+          filteredEmployees.map(employee => (
             <div
-              className={`${styles.expandedContent} ${expandedRow === employee ? styles.open : ''}`}
+              key={employee.id}
+              className={styles.mobileCard}
+              onClick={() => handleMobileCardClick(employee.id)}
             >
-              <div className={styles.detailRow}>
-                <span className={styles.detailRowDescription}>Cargo</span>
-                <span>employee.cargo</span>
+              <div className={styles.mobileCardHeader}>
+                <div className={styles.mobileCardPhoto}>
+                  <img src={employee.image} className={styles.avatar} />
+                </div>
+                <div className={styles.mobileCardName}>
+                  <span>{employee.name}</span>
+                </div>
+                <div>
+                  {expandedRow === employee.id ? (
+                    <ChevronDown />
+                  ) : (
+                    <ChevronUp />
+                  )}
+                </div>
               </div>
-              <div className={styles.detailRow}>
-                <span className={styles.detailRowDescription}>
-                  Data de admissão
-                </span>
-                <span>employee.cargo</span>
-              </div>
-              <div className={styles.detailRow}>
-                <span className={styles.detailRowDescription}>Telefone</span>
-                <span>employee.cargo</span>
+              <div
+                className={`${styles.expandedContent} ${expandedRow === employee.id ? styles.open : ''}`}
+              >
+                <div className={styles.detailRow}>
+                  <span className={styles.detailRowDescription}>Cargo</span>
+                  <span>{employee.job}</span>
+                </div>
+                <div className={styles.detailRow}>
+                  <span className={styles.detailRowDescription}>
+                    Data de admissão
+                  </span>
+                  <span>
+                    {new Date(employee.admission_date).toLocaleDateString(
+                      'pt-BR'
+                    )}
+                  </span>
+                </div>
+                <div className={styles.detailRow}>
+                  <span className={styles.detailRowDescription}>Telefone</span>
+                  <span>{formatPhone(employee.phone)}</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

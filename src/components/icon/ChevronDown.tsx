@@ -15,9 +15,9 @@ export function ChevronDown({ width = 32, height = 33 }: ChevronDownProps) {
       <path
         d="M7.5 12L16 21L24.5 12"
         stroke="#0500FF"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
