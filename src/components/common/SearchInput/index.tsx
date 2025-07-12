@@ -1,13 +1,14 @@
-import { useState, type SetStateAction } from 'react';
 import styles from './SearchInput.module.css';
 import SearchIcon from '@/components/icon/SearchIcon';
 
-const SearchInput = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+interface SearchInputProps {
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
+}
 
-  const handleSearch = (e: { target: { value: SetStateAction<string> } }) => {
+const SearchInput = ({ searchTerm, setSearchTerm }: SearchInputProps) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-    console.log('Pesquisando por:', e.target.value);
   };
 
   return (

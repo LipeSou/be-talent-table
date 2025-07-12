@@ -1,12 +1,20 @@
-import { useEmployees } from '@/hooks/useEmployees';
 import { formatPhone } from '@/utils/formatters';
 import styles from './EmployeeTable.module.css';
 import { Table } from '@/components/common/Table';
 import { MobileCard } from '@/components/common/MobileCard';
+import type { Employee } from '@/services/employeeService';
 
-const EmployeeTable = () => {
-  const { filteredEmployees, loading, error } = useEmployees();
+interface EmployeeTableProps {
+  filteredEmployees: Employee[];
+  loading: boolean;
+  error: string | null;
+}
 
+const EmployeeTable = ({
+  filteredEmployees,
+  loading,
+  error,
+}: EmployeeTableProps) => {
   if (loading) {
     return (
       <div className={styles.container}>
