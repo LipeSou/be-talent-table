@@ -1,111 +1,119 @@
-import { ChevronDown } from '@/components/icon/ChevronDown';
-import styles from './EmployeeTable.module.css';
-import { useState } from 'react';
-import { ChevronUp } from '@/components/icon/ChevronUp';
 import { useEmployees } from '@/hooks/useEmployees';
 import { formatPhone } from '@/utils/formatters';
+import styles from './EmployeeTable.module.css';
+import { Table } from '@/components/common/Table';
+import { MobileCard } from '@/components/common/MobileCard';
 
-const EmplyeeTable = () => {
-  const { filteredEmployees } = useEmployees();
+const EmployeeTable = () => {
+  const { filteredEmployees, loading, error } = useEmployees();
 
-  const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.loading}>Carregando funcionários...</div>
+      </div>
+    );
+  }
 
-  const handleMobileCardClick = (index: string) => {
-    setExpandedRow(expandedRow === index ? null : index);
-  };
+  if (error) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.error}>
+          Erro ao carregar funcionários: {error}
+        </div>
+      </div>
+    );
+  }
+
+  if (!filteredEmployees || filteredEmployees.length === 0) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.empty}>Nenhum funcionário encontrado</div>
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.tableContainer}>
-      {/* Desktop */}
-      <table className={styles.table}>
-        <thead className={styles.tableHeader}>
-          <tr>
-            <th>FOTO</th>
-            <th>NOME</th>
-            <th>CARGO</th>
-            <th>DATA DE ADMISSÃO</th>
-            <th>TELEFONE</th>
-          </tr>
-        </thead>
-        <tbody className={styles.tableBody}>
-          {!!filteredEmployees &&
-            filteredEmployees.length > 0 &&
-            filteredEmployees.map(employee => (
-              <tr key={employee.id}>
-                <td className={styles.photoCell}>
-                  <img src={employee.image} className={styles.avatar} />
-                </td>
-                <td>{employee.name}</td>
-                <td>{employee.job}</td>
-                <td>
-                  {new Date(employee.admission_date).toLocaleDateString(
-                    'pt-BR'
-                  )}
-                </td>
-                <td>{formatPhone(employee.phone)}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      {/* Mobile */}
-      <div className={styles.mobileCardList}>
-        <div className={styles.mobileHeader}>
-          <div className={styles.mobileHeaderPhoto}>FOTO</div>
-          <div className={styles.mobileHeaderName}>NOME</div>
-          <div className={styles.mobileHeaderIcon}>
+    <div className={styles.container}>
+      {/* Desktop Table */}
+      <Table.Root>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeadCell width="80px" align="center">
+              FOTO
+            </Table.HeadCell>
+            <Table.HeadCell>NOME</Table.HeadCell>
+            <Table.HeadCell>CARGO</Table.HeadCell>
+            <Table.HeadCell>DATA DE ADMISSÃO</Table.HeadCell>
+            <Table.HeadCell>TELEFONE</Table.HeadCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          {filteredEmployees.map(employee => (
+            <Table.Row key={employee.id}>
+              <Table.Cell align="center">
+                <img
+                  src={employee.image}
+                  alt={employee.name}
+                  className={styles.avatar}
+                />
+              </Table.Cell>
+              <Table.Cell>{employee.name}</Table.Cell>
+              <Table.Cell>{employee.job}</Table.Cell>
+              <Table.Cell>
+                {new Date(employee.admission_date).toLocaleDateString('pt-BR')}
+              </Table.Cell>
+              <Table.Cell>{formatPhone(employee.phone)}</Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table.Root>
+
+      {/* Mobile Cards */}
+      <MobileCard.Root>
+        <MobileCard.Header>
+          <span>FOTO</span>
+          <span>NOME</span>
+          <div className={styles.iconContainer}>
             <div className={styles.circle} />
           </div>
-        </div>
+        </MobileCard.Header>
 
-        {!!filteredEmployees &&
-          filteredEmployees.length > 0 &&
-          filteredEmployees.map(employee => (
-            <div
-              key={employee.id}
-              className={styles.mobileCard}
-              onClick={() => handleMobileCardClick(employee.id)}
-            >
-              <div className={styles.mobileCardHeader}>
-                <div className={styles.mobileCardPhoto}>
-                  <img src={employee.image} className={styles.avatar} />
-                </div>
-                <div className={styles.mobileCardName}>
-                  <span>{employee.name}</span>
-                </div>
-                <div>
-                  {expandedRow === employee.id ? (
-                    <ChevronDown />
-                  ) : (
-                    <ChevronUp />
-                  )}
-                </div>
+        {filteredEmployees.map(employee => (
+          <MobileCard.Item key={employee.id} id={employee.id}>
+            <MobileCard.Main>
+              <div className={styles.mobileAvatar}>
+                <img
+                  src={employee.image}
+                  alt={employee.name}
+                  className={styles.avatar}
+                />
               </div>
-              <div
-                className={`${styles.expandedContent} ${expandedRow === employee.id ? styles.open : ''}`}
-              >
-                <div className={styles.detailRow}>
-                  <span className={styles.detailRowDescription}>Cargo</span>
-                  <span>{employee.job}</span>
-                </div>
-                <div className={styles.detailRow}>
-                  <span className={styles.detailRowDescription}>
-                    Data de admissão
-                  </span>
-                  <span>
-                    {new Date(employee.admission_date).toLocaleDateString(
-                      'pt-BR'
-                    )}
-                  </span>
-                </div>
-                <div className={styles.detailRow}>
-                  <span className={styles.detailRowDescription}>Telefone</span>
-                  <span>{formatPhone(employee.phone)}</span>
-                </div>
+              <span>{employee.name}</span>
+              <div className={styles.iconContainer}>
+                <MobileCard.Chevron />
               </div>
-            </div>
-          ))}
-      </div>
+            </MobileCard.Main>
+
+            <MobileCard.Details>
+              <MobileCard.DetailRow label="Cargo" value={employee.job} />
+              <MobileCard.DetailRow
+                label="Data de admissão"
+                value={new Date(employee.admission_date).toLocaleDateString(
+                  'pt-BR'
+                )}
+              />
+              <MobileCard.DetailRow
+                label="Telefone"
+                value={formatPhone(employee.phone)}
+              />
+            </MobileCard.Details>
+          </MobileCard.Item>
+        ))}
+      </MobileCard.Root>
     </div>
   );
 };
 
-export default EmplyeeTable;
+export default EmployeeTable;

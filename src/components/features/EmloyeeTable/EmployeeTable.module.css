@@ -1,58 +1,5 @@
-.tableContainer {
-  background-color: var(--white);
-  border-radius: 8px 8px 0px 0px;
-  overflow: hidden;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+.container {
   margin-bottom: 64px;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tableHeader {
-  background-color: var(--blue-primary);
-  color: var(--white);
-  font-weight: 600;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-}
-
-.tableHeader th {
-  padding: 16px;
-  text-align: left;
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.tableHeader th:first-child {
-  width: 80px;
-  text-align: center;
-}
-
-.tableBody tr {
-  border-bottom: 1px solid var(--gray-10);
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-}
-
-.tableBody tr:last-child {
-  border-bottom: none;
-}
-
-.tableBody tr:hover {
-  background-color: var(--gray-05);
-}
-
-.tableBody td {
-  padding: 16px;
-  border: none;
-  color: var(--black);
-  font-size: 16px;
-}
-
-.photoCell {
-  text-align: center;
-  width: 80px;
 }
 
 .avatar {
@@ -62,91 +9,49 @@
   object-fit: cover;
 }
 
-.mobileCardList {
-  display: none;
+.circle {
+  width: 8px;
+  height: 8px;
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+.loading,
+.error,
+.empty {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.loading {
+  color: var(--gray-20);
+}
+
+.error {
+  color: #dc3545;
+}
+
+.empty {
+  color: var(--gray-20);
 }
 
 @media (max-width: 768px) {
-  .mobileHeader {
-    background-color: var(--blue-primary);
-    font-weight: 500;
-    font-size: 16px;
-    color: var(--white);
-    display: grid;
-    grid-template-columns: 84px 1fr 46px;
-    align-items: center;
-    height: 47px;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-  }
-  .mobileHeaderPhoto {
-    padding: 14px 16px 14px 16px;
+  .container {
+    margin-top: 0;
   }
 
-  .tableContainer {
-    margin-top: 0px;
-  }
-
-  .table {
-    display: none;
-  }
-
-  .mobileCardList {
-    display: block;
-  }
-
-  .mobileCard {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    padding-left: 16px;
-    padding-right: 12px;
-
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-  }
-
-  .mobileCardHeader {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 84px 1fr 46px;
-  }
-
-  .circle {
-    width: 8px;
-    height: 8px;
-    background-color: var(--white);
-    border-radius: 50%;
-  }
-
-  .expandedContent {
-    padding-top: 32px;
-    width: 100%;
-
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition:
-      max-height 0.3s ease-in-out,
-      opacity 0.3s ease-in-out,
-      padding 0.3s ease-in-out;
-    padding-top: 0;
-  }
-
-  .expandedContent.open {
-    max-height: 300px;
-    opacity: 1;
-    padding-top: 32px;
-    padding-bottom: 32px;
-  }
-
-  .detailRow {
+  .iconContainer {
     display: flex;
-    justify-content: space-between;
-    border-width: 0px 0px 1px 0px;
-    border-style: dashed;
-    border-color: var(--gray-10);
-    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .detailRowDescription {
-    font-weight: 600;
+  .mobileAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: start;
   }
 }
