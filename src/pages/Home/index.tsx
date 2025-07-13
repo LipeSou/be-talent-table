@@ -1,5 +1,5 @@
 import SearchInput from '@/components/common/SearchInput';
-import styles from './Home.module.css';
+import styles from '@/pages/Home/Home.module.css';
 import EmployeeTable from '@/components/features/EmployeeTable';
 import { useEmployees } from '@/hooks/useEmployees';
 
