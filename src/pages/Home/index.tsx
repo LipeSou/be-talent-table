@@ -1,7 +1,7 @@
 import SearchInput from '@/components/common/SearchInput';
 import styles from './Home.module.css';
-import EmployeeTable from '@/components/features/EmloyeeTable';
 import { useEmployees } from '@/hooks/useEmployees';
+import EmployeeTable from '@/components/features/EmloyeeTable';
 
 export default function Home() {
   const { filteredEmployees, loading, error, searchTerm, setSearchTerm } =
