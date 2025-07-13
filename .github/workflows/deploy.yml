@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        run: npm test -- --watchAll=false --passWithNoTests
+        run: npm test:watch-false
 
       - name: Run Tests with Coverage
         run: npm test -- --coverage --watchAll=false --passWithNoTests
