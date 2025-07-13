@@ -1,3 +1,5 @@
+import { employeesData } from '@/data/employees-data';
+
 export interface Employee {
   id: string;
   name: string;
@@ -11,6 +13,10 @@ class EmployeeService {
   private readonly baseUrl = 'http://localhost:3001';
 
   async getEmployees(): Promise<Employee[]> {
+    if (import.meta.env.PROD) {
+      return employeesData;
+    }
+
     try {
       const response = await fetch(`${this.baseUrl}/employees`);
 
