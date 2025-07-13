@@ -5,8 +5,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base:
-    process.env.NODE_ENV === 'production' ? '/betalent-frontend-test/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/be-talent-table/' : '/',
   test: {
     globals: true,
     environment: 'jsdom',
@@ -16,6 +15,11 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    assetsDir: 'assets',
   },
   server: {
     port: 3000,
