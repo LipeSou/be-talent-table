@@ -1,69 +1,135 @@
-# React + TypeScript + Vite
+# Teste Técnico Front-end BeTalent
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação de gestão de funcionários desenvolvida como parte do processo seletivo da BeTalent, focada em criar uma interface intuitiva e responsiva para visualização e busca de dados de colaboradores.
 
-Currently, two official plugins are available:
+## Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto consiste em uma aplicação web que exibe uma tabela de funcionários com funcionalidades de pesquisa e visualização responsiva. A aplicação consome dados de uma API simulada (json-server) e apresenta informações de forma organizada e acessível.
 
-## Expanding the ESLint configuration
+## Demonstração
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔗 [Acessar Aplicação Demo](https://lipesou.github.io/betalent-frontend-test)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+A aplicação conta com um **sistema inteligente de detecção de ambiente** através do env que garante funcionamento tanto em desenvolvimento quanto em produção:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Para garantir uma experiência de demonstração sem depender de serviços externos, foi desenvolvido um mecanismo que:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Em Ambiente de Produção (GitHub Pages):**
+  - Detecta automaticamente que está em produção
+  - Utiliza dados mockados internamente
+
+- **Em Ambiente de Desenvolvimento (Local):**
+  - Conecta-se ao json-server local
+
+### Funcionalidades Implementadas
+
+✅ Tabela de funcionários com foto, nome, cargo, data de admissão e telefone
+
+✅ Sistema de busca em tempo real por nome, cargo ou telefone
+
+✅ Formatação automática de datas e telefones no front-end
+
+✅ Design responsivo (mobile-first)
+
+✅ Interface limpa seguindo o design system fornecido
+
+✅ Implementado CI CD
+
+✅ Testes unitários na tabela 
+
+✅ Storybook na tabela
+
+## Tecnologias Utilizadas
+
+- **React 19** 
+- **TypeScript**
+- **Vite**
+- **CSS Modules** - Estilização componentizada
+- **json-server** - API simulada para fornecimento de dados
+- **ESLint + Prettier** - Padronização e qualidade de código
+- **Vitest + react-testing-library** - Framework de testes
+- **GitHub Actions** - CI/CD automatizado
+- **Storybook** - Documentação de componentes
+
+## Estrutura de pastas
+Foi baseada nesse artigo a estrutura de pastas do site
+
+https://dev.to/pramod_boda/recommended-folder-structure-for-react-2025-48mc
+
+<img width="185" height="726" alt="image" src="https://github.com/user-attachments/assets/637e0419-c2b6-4668-ac97-71ba50ca5399" />
+
+- A pasta componentes foi separada por common e features. A common ela vai ser para componentes mais comuns que podem ser utilizados em qualquer tela e a use-cases foi separados por componentes mais especícos e separado por pastas com o nome da página.
+
+## Instalação e Execução
+
+### Pré-requisitos
+
+- Node.js (v18+)
+- npm ou yarn
+- Git
+
+### Passo a passo
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/betalent-frontend-test.git
+cd betalent-frontend-test
+
+# 2. Instale as dependências
+npm install
+
+# 3. Em um terminal, inicie o json-server
+npm run server
+# ou
+npx json-server --watch db.json
+
+# 4. Em outro terminal, inicie a aplicação
+npm run dev
+A aplicação estará disponível em http://localhost:5175
+```
+## Storybook
+Foi implementado uma pequena documentação de componente utilizando storybook para a tabela
+```bash
+npm run storybook
+```
+<img width="1212" height="478" alt="image" src="https://github.com/user-attachments/assets/f4dc3a88-c3fc-4684-a64e-df19b3ffec79" />
+
+## Testes
+```bash
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Foram implementados testes simples visuais para dois componentes utilizando o vitest mas react-testing-library.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## CI/CD
+O projeto utiliza GitHub Actions para:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+✅ Executar testes automaticamente em cada push
+✅ Deploy automático para GitHub Pages
+
+<img width="1656" height="396" alt="image" src="https://github.com/user-attachments/assets/bebb4564-ece0-48c0-9240-fa7f587b2c5d" />
+
+## Design e UI/UX
+
+A aplicação segue fielmente o mockup fornecido no Figma, implementando:
+
+<img width="1116" height="918" alt="image" src="https://github.com/user-attachments/assets/cb1c9637-863e-4c40-a6ee-d323ef4f236b" />
+
+<img width="394" height="850" alt="image" src="https://github.com/user-attachments/assets/224c5149-f815-439a-9db9-bb557aa26e34" />
+
+### Design System
+
+- **Cores Principais:**
+  - Blue Primary: `#0500FF`
+  - Black: `#1C1C1C`
+  - Gray Scale: `#9E9E9E`, `#DFDFDF`, `#F0F0F0`
+  - White: `#FFFFFF`
+
+- **Tipografia:**
+  - Font Family: Helvetica Neue
+  - H1: 20px, Medium
+  - H2: 16px, Medium
+  - H3: 16px, Regular
+
+----- 
+Desenvolvido com 💙 para o processo seletivo da BeTalent
