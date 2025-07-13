@@ -26,7 +26,7 @@ export const employeesData: Employee[] = [
     admission_date: '2020-03-15T00:00:00.000Z',
     phone: '5557894561230',
     image:
-      'https://www.clipartmax.com/png/middle/277-2772117_user-profile-avatar-woman-icon-avatar-png-profile-icon.png',
+      'https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg',
   },
   {
     id: '4',
@@ -44,7 +44,7 @@ export const employeesData: Employee[] = [
     admission_date: '2020-06-20T00:00:00.000Z',
     phone: '5553698520147',
     image:
-      'https://www.clipartmax.com/png/middle/277-2772117_user-profile-avatar-woman-icon-avatar-png-profile-icon.png',
+      'https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg',
   },
   {
     id: '6',
@@ -71,7 +71,7 @@ export const employeesData: Employee[] = [
     admission_date: '2021-03-01T00:00:00.000Z',
     phone: '5551234567890',
     image:
-      'https://www.clipartmax.com/png/middle/277-2772117_user-profile-avatar-woman-icon-avatar-png-profile-icon.png',
+      'https://img.favpng.com/25/7/23/computer-icons-user-profile-avatar-image-png-favpng-LFqDyLRhe3PBXM0sx2LufsGFU.jpg',
   },
   {
     id: '10',
