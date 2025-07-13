@@ -5,6 +5,8 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base:
+    process.env.NODE_ENV === 'production' ? '/betalent-frontend-test/' : '/',
   test: {
     globals: true,
     environment: 'jsdom',
