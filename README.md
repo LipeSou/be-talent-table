@@ -2,10 +2,6 @@
 
 Uma aplicação de gestão de funcionários desenvolvida como parte do processo seletivo da BeTalent, focada em criar uma interface intuitiva e responsiva para visualização e busca de dados de colaboradores.
 
-## Sobre o Projeto
-
-Este projeto consiste em uma aplicação web que exibe uma tabela de funcionários com funcionalidades de pesquisa e visualização responsiva. A aplicação consome dados de uma API simulada (json-server) e apresenta informações de forma organizada e acessível.
-
 ## Demonstração
 
 ### [Acessar Aplicação Demo](https://lipesou.github.io/be-talent-table/) 
