@@ -8,7 +8,7 @@ Este projeto consiste em uma aplicação web que exibe uma tabela de funcionári
 
 ## Demonstração
 
-### 🔗 [Acessar Aplicação Demo](https://lipesou.github.io/betalent-frontend-test)
+### [Acessar Aplicação Demo](https://lipesou.github.io/be-talent-table/) 
 
 A aplicação conta com um **sistema inteligente de detecção de ambiente** através do env que garante funcionamento tanto em desenvolvimento quanto em produção:
 
