@@ -58,7 +58,7 @@ https://dev.to/pramod_boda/recommended-folder-structure-for-react-2025-48mc
 
 <img width="185" height="726" alt="image" src="https://github.com/user-attachments/assets/637e0419-c2b6-4668-ac97-71ba50ca5399" />
 
-- A pasta componentes foi separada por common e features. A common ela vai ser para componentes mais comuns que podem ser utilizados em qualquer tela e a use-cases foi separados por componentes mais especícos e separado por pastas com o nome da página.
+- A pasta componentes foi separada por common e features. A common ela vai ser para componentes mais comuns que podem ser utilizados em qualquer tela e a features foi separados por componentes mais específicos e separado por pastas com o nome da página.
 
 ## Instalação e Execução
 
@@ -79,8 +79,6 @@ cd betalent-frontend-test
 npm install
 
 # 3. Em um terminal, inicie o json-server
-npm run server
-# ou
 npx json-server --watch db.json
 
 # 4. Em outro terminal, inicie a aplicação
@@ -100,6 +98,8 @@ npm run test
 ```
 
 Foram implementados testes simples visuais para dois componentes utilizando o vitest mas react-testing-library.
+<img width="1014" height="400" alt="image" src="https://github.com/user-attachments/assets/5f02871c-ea9d-4657-bfcf-cd0c9f8b02b5" />
+
 
 ## CI/CD
 O projeto utiliza GitHub Actions para:
