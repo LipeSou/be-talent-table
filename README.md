@@ -93,7 +93,7 @@ npm run storybook
 npm run test
 ```
 
-Foram implementados testes simples visuais para dois componentes utilizando o vitest mas react-testing-library.
+Foram implementados testes simples visuais para dois componentes utilizando o vitest mais react-testing-library.
 <img width="1014" height="400" alt="image" src="https://github.com/user-attachments/assets/5f02871c-ea9d-4657-bfcf-cd0c9f8b02b5" />
 
 
